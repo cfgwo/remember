@@ -62,15 +62,13 @@ public class EditStoryActivity extends StoryActivityBase {
 
 		if (savedInstanceState == null) {
 			// During initial setup, plug in the details fragment.
-			long index = getIntent().getExtras().getLong(
-					EditStoryFragment.rowIdentifyerTAG);
+			long index = getIntent().getExtras().getLong(EditStoryFragment.rowIdentifyerTAG);
 
 			EditStoryFragment editor = EditStoryFragment.newInstance(index);
 
 			editor.setArguments(getIntent().getExtras());
 
-			getSupportFragmentManager().beginTransaction()
-					.add(android.R.id.content, editor).commit();
+			getSupportFragmentManager().beginTransaction().add(android.R.id.content, editor).commit();
 		}
 	}
 

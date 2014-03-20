@@ -110,15 +110,15 @@ public class StoryViewFragment extends Fragment
 		public void onClick(View view) {
 
 			switch (view.getId()) {
-			case R.id.button_story_view_to_delete:
-				deleteButtonPressed();
-				break;
-			case R.id.button_story_view_to_edit:
-				editButtonPressed();
-				break;
-			default:
-				break;
-			}
+					case R.id.button_story_view_to_delete:
+						deleteButtonPressed();
+						break;
+					case R.id.button_story_view_to_edit:
+						editButtonPressed();
+						break;
+					default:
+						break;
+					}
 		}
 	};
 
@@ -139,7 +139,7 @@ public class StoryViewFragment extends Fragment
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try {
-			mOpener = (OnOpenWindowInterface) activity;
+			mOpener  = (OnOpenWindowInterface) activity;
 			resolver = new MoocResolver(activity);
 		} catch (ClassCastException e) {
 			throw new ClassCastException(activity.toString()
@@ -158,10 +158,8 @@ public class StoryViewFragment extends Fragment
 
 	// this fragment is creating its view before it can be modified
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.story_view_fragment, container,
-				false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.story_view_fragment, container, false);
 		container.setBackgroundColor(Color.GRAY);
 		return view;
 	}
@@ -171,23 +169,15 @@ public class StoryViewFragment extends Fragment
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		titleTV = (TextView) getView()
-				.findViewById(R.id.story_view_value_title);
-		bodyTV = (TextView) getView().findViewById(R.id.story_view_value_body);
-		audioButton = (Button) getView().findViewById(
-				R.id.story_view_value_audio_link);
-		videoLinkView = (VideoView) getView().findViewById(
-				R.id.story_view_value_video_link);
-		imageNameTV = (TextView) getView().findViewById(
-				R.id.story_view_value_image_name);
-		imageMetaDataView = (ImageView) getView().findViewById(
-				R.id.story_view_value_image_meta_data);
-		storyTimeTV = (TextView) getView().findViewById(
-				R.id.story_view_value_story_time);
-		latitudeTV = (TextView) getView().findViewById(
-				R.id.story_view_value_latitude);
-		longitudeTV = (TextView) getView().findViewById(
-				R.id.story_view_value_longitude);
+		titleTV     = (TextView) getView().findViewById(R.id.story_view_value_title);
+		bodyTV      = (TextView) getView().findViewById(R.id.story_view_value_body);
+		audioButton = (Button) getView().findViewById(R.id.story_view_value_audio_link);
+		videoLinkView = (VideoView) getView().findViewById(R.id.story_view_value_video_link);
+		imageNameTV = (TextView) getView().findViewById(R.id.story_view_value_image_name);
+		imageMetaDataView = (ImageView) getView().findViewById(R.id.story_view_value_image_meta_data);
+		storyTimeTV = (TextView) getView().findViewById(R.id.story_view_value_story_time);
+		latitudeTV  = (TextView) getView().findViewById(R.id.story_view_value_latitude);
+		longitudeTV = (TextView) getView().findViewById(R.id.story_view_value_longitude);
 
 		titleTV.setText("" + "");
 		bodyTV.setText("" + "");
@@ -196,10 +186,8 @@ public class StoryViewFragment extends Fragment
 		latitudeTV.setText("" + 0);
 		longitudeTV.setText("" + 0);
 
-		editButton = (Button) getView().findViewById(
-				R.id.button_story_view_to_edit);
-		deleteButton = (Button) getView().findViewById(
-				R.id.button_story_view_to_delete);
+		editButton = (Button) getView().findViewById(R.id.button_story_view_to_edit);
+		deleteButton = (Button) getView().findViewById(R.id.button_story_view_to_delete);
 
 		editButton.setOnClickListener(myOnClickListener);
 		deleteButton.setOnClickListener(myOnClickListener);
@@ -221,8 +209,7 @@ public class StoryViewFragment extends Fragment
 		if (storyData == null) {
 			getView().setVisibility(View.GONE);
 		} else { // else it just displays empty screen
-			Log.d(LOG_TAG,
-					"setUiToStoryData + storyData:" + storyData.toString());
+			Log.d(LOG_TAG, "setUiToStoryData + storyData:" + storyData.toString());
 			titleTV.setText(String.valueOf(storyData.title).toString());
 			bodyTV.setText(String.valueOf(storyData.body).toString());
 			

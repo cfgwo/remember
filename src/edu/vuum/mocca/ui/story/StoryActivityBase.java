@@ -171,12 +171,10 @@ public class StoryActivityBase extends FragmentActivity implements OnOpenWindowI
 		Log.d(LOG_TAG, "openEditStoryFragment(" + index + ")");
 		if (determineDualPane()) {
 
-			Fragment test = getSupportFragmentManager().findFragmentById(
-					R.id.details);
+			Fragment test = getSupportFragmentManager().findFragmentById(R.id.details);
 
 			// Log.d(LOG_TAG, "open view class:" + test.getClass());
-			FragmentTransaction ft = getSupportFragmentManager()
-					.beginTransaction();
+			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			if (test != null && test.getClass() != EditStoryFragment.class) {
 				EditStoryFragment editor = EditStoryFragment.newInstance(index);
 
@@ -219,8 +217,7 @@ public class StoryActivityBase extends FragmentActivity implements OnOpenWindowI
 		Log.d(LOG_TAG, "openCreateStoryFragment");
 		if (determineDualPane()) {
 
-			Fragment test = getSupportFragmentManager().findFragmentById(
-					R.id.details);
+			Fragment test = getSupportFragmentManager().findFragmentById(R.id.details);
 
 			// Log.d(LOG_TAG, "open view class:" + test.getClass());
 			FragmentTransaction ft = getSupportFragmentManager()
@@ -264,8 +261,7 @@ public class StoryActivityBase extends FragmentActivity implements OnOpenWindowI
 		Log.d(LOG_TAG, "openCreateStoryFragment");
 		if (determineDualPane()) {
 			// already displayed
-			Fragment test = getSupportFragmentManager().findFragmentByTag(
-					"imageFragmentTag");
+			Fragment test = getSupportFragmentManager().findFragmentByTag("imageFragmentTag");
 			if (test != null) {
 				StoryListFragment t = (StoryListFragment) test;
 				t.updateStoryData();
@@ -281,11 +277,9 @@ public class StoryActivityBase extends FragmentActivity implements OnOpenWindowI
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (determineDualPane()) {
-			getSupportFragmentManager().findFragmentById(R.id.details)
-					.onActivityResult(requestCode, resultCode, data);
+			getSupportFragmentManager().findFragmentById(R.id.details).onActivityResult(requestCode, resultCode, data);
 		} else {
-			getSupportFragmentManager().findFragmentById(android.R.id.content)
-					.onActivityResult(requestCode, resultCode, data);
+			getSupportFragmentManager().findFragmentById(android.R.id.content).onActivityResult(requestCode, resultCode, data);
 		}
 
 	}
