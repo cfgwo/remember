@@ -69,8 +69,7 @@ public class ViewStoryActivity extends StoryActivityBase {
 
 			details.setArguments(getIntent().getExtras());
 
-			getSupportFragmentManager().beginTransaction()
-					.add(android.R.id.content, details).commit();
+			getSupportFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
 		}
 	}
 }

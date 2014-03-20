@@ -133,7 +133,7 @@ public class StoryListFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		Log.d(LOG_TAG, "onCreate");
 		super.onCreate(savedInstanceState);
-		resolver = new MoocResolver(getActivity());
+		resolver  = new MoocResolver(getActivity());
 		StoryData = new ArrayList<StoryData>();
 		setRetainInstance(true);
 	}
@@ -146,14 +146,12 @@ public class StoryListFragment extends ListFragment {
 	 * android.support.v4.app.ListFragment#onCreateView(android.view.LayoutInflater
 	 * , android.view.ViewGroup, android.os.Bundle)
 	 */
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.story_listview, container, false);
 		// get the ListView that will be displayed
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
 
-		filterET = (EditText) view
-				.findViewById(R.id.story_listview_tags_filter);
+		filterET = (EditText) view.findViewById(R.id.story_listview_tags_filter);
 		
 		filterET.addTextChangedListener(new TextWatcher() {
 			
@@ -163,8 +161,7 @@ public class StoryListFragment extends ListFragment {
 			}
 			
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
+			public void beforeTextChanged(CharSequence s, int start, int count,int after) {
 				
 			}
 			
@@ -221,16 +218,14 @@ public class StoryListFragment extends ListFragment {
 		// layouts
 		super.onActivityCreated(savedInstanceState);
 		Log.d(LOG_TAG, "onActivityCreated");
-		aa = new StoryDataArrayAdaptor(getActivity(),
-				R.layout.story_listview_custom_row, StoryData);
+		aa = new StoryDataArrayAdaptor(getActivity(), R.layout.story_listview_custom_row, StoryData);
 
 		// update the back end data.
 		updateStoryData();
 
 		setListAdapter(aa);
 
-		Button createNewButton = (Button) getView().findViewById(
-				R.id.story_listview_create);
+		Button createNewButton = (Button) getView().findViewById(R.id.story_listview_create);
 		createNewButton.setOnClickListener(new OnClickListener() {
 
 			@Override

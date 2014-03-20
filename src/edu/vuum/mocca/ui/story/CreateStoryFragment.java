@@ -87,8 +87,7 @@ import android.view.*;
  */
 public class CreateStoryFragment extends Fragment {
 
-	public final static String LOG_TAG = CreateStoryFragment.class
-			.getCanonicalName();
+	public final static String LOG_TAG = CreateStoryFragment.class.getCanonicalName();
 
 	// EditText(s) used
 
@@ -125,8 +124,7 @@ public class CreateStoryFragment extends Fragment {
 	public final static String LOCATION = "story";
 
 	void doRecordButtonClick() {
-		Intent i = new Intent(CreateStoryFragment.this.getActivity(),
-				SoundRecordActivity.class);
+		Intent i = new Intent(CreateStoryFragment.this.getActivity(),SoundRecordActivity.class);
 		CreateStoryFragment.this.startActivity(i);
 	}
 
@@ -149,14 +147,13 @@ public class CreateStoryFragment extends Fragment {
 			mOpener = (OnOpenWindowInterface) activity;
 			resolver = new MoocResolver(activity);
 		} catch (ClassCastException e) {
-			throw new ClassCastException(activity.toString()
-					+ " must implement OnOpenWindowListener");
+			throw new ClassCastException(activity.toString() + " must implement OnOpenWindowListener");
 		}
 	}
 
 	@Override
 	public void onDetach() {
-		mOpener = null;
+		mOpener  = null;
 		resolver = null;
 		super.onDetach();
 	}
@@ -166,41 +163,24 @@ public class CreateStoryFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 
 		// Get the EditTexts
-		titleET = (EditText) getView().findViewById(
-				R.id.story_create_value_title);
-		bodyET = (EditText) getView()
-				.findViewById(R.id.story_create_value_body);
-		audioCaptureButton = (Button) getView().findViewById(
-				R.id.story_create_value_audio_link);
-		videoCaptureButton = (Button) getView().findViewById(
-				R.id.story_create_value_video_button);
-		imageNameET = (EditText) getView().findViewById(
-				R.id.story_create_value_image_name);
-		imageCaptureButton = (Button) getView().findViewById(
-				R.id.story_create_value_image_button);
-		storyTimeET = (TextView) getView().findViewById(
-				R.id.story_create_value_story_time);
-		locationButton = (Button) getView().findViewById(
-				R.id.story_create_value_location_button);
+		titleET = (EditText) getView().findViewById(R.id.story_create_value_title);
+		bodyET  = (EditText) getView().findViewById(R.id.story_create_value_body);
+		audioCaptureButton = (Button) getView().findViewById(R.id.story_create_value_audio_link);
+		videoCaptureButton = (Button) getView().findViewById(R.id.story_create_value_video_button);
+		imageNameET = (EditText) getView().findViewById(R.id.story_create_value_image_name);
+		imageCaptureButton = (Button) getView().findViewById(R.id.story_create_value_image_button);
+		storyTimeET = (TextView) getView().findViewById(R.id.story_create_value_story_time);
+		locationButton = (Button) getView().findViewById(R.id.story_create_value_location_button);
+		imageLocation = (TextView) getView().findViewById(R.id.story_create_value_image_location);
+		videoLocation = (TextView) getView().findViewById(R.id.story_create_value_video_location);
+		audioLocation = (TextView) getView().findViewById(R.id.story_create_value_audio_location);
 
-		imageLocation = (TextView) getView().findViewById(
-				R.id.story_create_value_image_location);
-		videoLocation = (TextView) getView().findViewById(
-				R.id.story_create_value_video_location);
-		audioLocation = (TextView) getView().findViewById(
-				R.id.story_create_value_audio_location);
+		latitudeValue = (TextView) getView().findViewById(R.id.story_create_value_latitude);
+		longitudeValue = (TextView) getView().findViewById(R.id.story_create_value_longitude);
 
-		latitudeValue = (TextView) getView().findViewById(
-				R.id.story_create_value_latitude);
-		longitudeValue = (TextView) getView().findViewById(
-				R.id.story_create_value_longitude);
-
-		buttonClear = (Button) getView().findViewById(
-				R.id.story_create_button_reset);
-		buttonCancel = (Button) getView().findViewById(
-				R.id.story_create_button_cancel);
-		buttonCreate = (Button) getView().findViewById(
-				R.id.story_create_button_save);
+		buttonClear = (Button) getView().findViewById(R.id.story_create_button_reset);
+		buttonCancel = (Button) getView().findViewById(R.id.story_create_button_cancel);
+		buttonCreate = (Button) getView().findViewById(R.id.story_create_button_save);
 
 		buttonClear.setOnClickListener(new OnClickListener() {
 			@Override
@@ -340,7 +320,7 @@ public class CreateStoryFragment extends Fragment {
 			} else {
 				// Image capture failed, advise user
 			}
-		} else if (requestCode == CreateStoryActivity.MIC_SOUND_REQUEST_Ellen) {
+		} else if (requestCode == CreateStoryActivity.MIC_SOUND_REQUEST) {
 			
 			if (resultCode == CreateStoryActivity.RESULT_OK) {
 				// Image captured and saved to fileUri specified in the Intent

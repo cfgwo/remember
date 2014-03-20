@@ -107,14 +107,10 @@ public class TagsCreator {
 	 */
 	public static TagsData getTagsDataFromCursor(Cursor cursor) {
 
-		long rowID = cursor.getLong(cursor
-				.getColumnIndex(MoocSchema.Tags.Cols.ID));
-		long loginId = cursor.getLong(cursor
-				.getColumnIndex(MoocSchema.Tags.Cols.LOGIN_ID));
-		long storyId = cursor.getLong(cursor
-				.getColumnIndex(MoocSchema.Tags.Cols.STORY_ID));
-		String tag = cursor.getString(cursor
-				.getColumnIndex(MoocSchema.Tags.Cols.TAG));
+		long rowID   = cursor.getLong(cursor.getColumnIndex(MoocSchema.Tags.Cols.ID));
+		long loginId = cursor.getLong(cursor.getColumnIndex(MoocSchema.Tags.Cols.LOGIN_ID));
+		long storyId = cursor.getLong(cursor.getColumnIndex(MoocSchema.Tags.Cols.STORY_ID));
+		String tag = cursor.getString(cursor.getColumnIndex(MoocSchema.Tags.Cols.TAG));
 
 		// construct the returned object
 		TagsData rValue = new TagsData(rowID, loginId, storyId, tag);

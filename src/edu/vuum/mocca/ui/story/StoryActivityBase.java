@@ -67,13 +67,11 @@ import android.app.*;
  * @author Michael A. Walker
  * 
  */
-public class StoryActivityBase extends FragmentActivity implements
-		OnOpenWindowInterface {
+public class StoryActivityBase extends FragmentActivity implements OnOpenWindowInterface {
 
 	boolean promptOnBackPressed = false;
 	StoryListFragment fragment;
-	private static final String LOG_TAG = StoryActivityBase.class
-			.getCanonicalName();
+	private static final String LOG_TAG = StoryActivityBase.class.getCanonicalName();
 	boolean mDualPane;
 
 	@Override
@@ -129,15 +127,12 @@ public class StoryActivityBase extends FragmentActivity implements
 		Log.d(LOG_TAG, "openStoryViewFragment(" + index + ")");
 		if (determineDualPane()) {
 
-			Fragment test = getSupportFragmentManager().findFragmentById(
-					R.id.details);
+			Fragment test = getSupportFragmentManager().findFragmentById(R.id.details);
 
 			// Log.d(LOG_TAG, "open view class:" + test.getClass());
-			FragmentTransaction ft = getSupportFragmentManager()
-					.beginTransaction();
+			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			if (test != null && test.getClass() != StoryViewFragment.class) {
-				StoryViewFragment details = StoryViewFragment
-						.newInstance(index);
+				StoryViewFragment details = StoryViewFragment.newInstance(index);
 
 				// Execute a transaction, replacing any existing
 				// fragment with this one inside the frame.
@@ -145,8 +140,7 @@ public class StoryActivityBase extends FragmentActivity implements
 
 			} else {
 				// Check what fragment is shown, replace if needed.
-				StoryViewFragment details = (StoryViewFragment) getSupportFragmentManager()
-						.findFragmentById(R.id.details);
+				StoryViewFragment details = (StoryViewFragment) getSupportFragmentManager().findFragmentById(R.id.details);
 				if (details == null || details.getUniqueKey() != index) {
 					// Make new fragment to show this selection.
 					details = StoryViewFragment.newInstance(index);

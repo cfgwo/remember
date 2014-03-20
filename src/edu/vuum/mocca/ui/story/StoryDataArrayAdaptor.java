@@ -75,8 +75,7 @@ public class StoryDataArrayAdaptor extends ArrayAdapter<StoryData> {
 
     int resource;
 
-    public StoryDataArrayAdaptor(Context _context, int _resource,
-            List<StoryData> _items) {
+    public StoryDataArrayAdaptor(Context _context, int _resource, List<StoryData> _items) {
         super(_context, _resource, _items);
         Log.d(LOG_TAG, "constructor()");
         resource = _resource;
@@ -96,20 +95,15 @@ public class StoryDataArrayAdaptor extends ArrayAdapter<StoryData> {
             if (convertView == null) {
                 todoView = new LinearLayout(getContext());
                 String inflater = Context.LAYOUT_INFLATER_SERVICE;
-                LayoutInflater vi = (LayoutInflater) getContext()
-                        .getSystemService(inflater);
+                LayoutInflater vi = (LayoutInflater) getContext() .getSystemService(inflater);
                 vi.inflate(resource, todoView, true);
             } else {
                 todoView = (LinearLayout) convertView;
             }
 
-            TextView KEY_IDTV = (TextView) todoView
-            		.findViewById(R.id.story_listview_custom_row_KEY_ID_textView);
-            
-            TextView titleTV = (TextView) todoView
-                    .findViewById(R.id.story_listview_custom_row_title_textView);
-            TextView creationTimeTV = (TextView) todoView
-                    .findViewById(R.id.story_listview_custom_row_creation_time_textView);
+            TextView KEY_IDTV = (TextView) todoView.findViewById(R.id.story_listview_custom_row_KEY_ID_textView);
+            TextView titleTV = (TextView) todoView.findViewById(R.id.story_listview_custom_row_title_textView);
+            TextView creationTimeTV = (TextView) todoView.findViewById(R.id.story_listview_custom_row_creation_time_textView);
             
             KEY_IDTV.setText("" + KEY_ID);
             titleTV.setText("" + title);
@@ -117,9 +111,7 @@ public class StoryDataArrayAdaptor extends ArrayAdapter<StoryData> {
             Log.i("StoryDataArrayAdaptor", String.valueOf(item.creationTime));
             
         } catch (Exception e) {
-            Toast.makeText(getContext(),
-                    "exception in ArrayAdpter: " + e.getMessage(),
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"exception in ArrayAdpter: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return todoView;
     }

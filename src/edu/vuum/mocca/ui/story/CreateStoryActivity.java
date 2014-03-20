@@ -74,10 +74,9 @@ import java.io.*;
 /**
  * Fragments require a Container Activity, this is the one for the Edit StoryData, also handles launching intents for audio/video capture.
  */
-public class CreateStoryActivity extends StoryActivityBase {
+public class CreateStoryActivity extends StoryActivityBase{
 
-	private final static String LOG_TAG = CreateStoryActivity.class
-			.getCanonicalName();
+	private final static String LOG_TAG = CreateStoryActivity.class.getCanonicalName();
 
 	public static final int MEDIA_TYPE_IMAGE = 1;
 	public static final int MEDIA_TYPE_VIDEO = 2;
@@ -89,6 +88,8 @@ public class CreateStoryActivity extends StoryActivityBase {
 
 	private CreateStoryFragment fragment;
 
+	final static int MIC_SOUND_REQUEST_Ellen = 3;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -98,8 +99,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 
 			fragment.setArguments(getIntent().getExtras());
 
-			getSupportFragmentManager().beginTransaction()
-					.add(android.R.id.content, fragment).commit();
+			getSupportFragmentManager().beginTransaction().add(android.R.id.content, fragment).commit();
 		}
 	}
 
@@ -131,8 +131,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 	
 	public void getLocationClicked(View aView) {
 		// Acquire a reference to the system Location Manager
-		final LocationManager locationManager = (LocationManager) this
-				.getSystemService(Context.LOCATION_SERVICE);
+		final LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
 		// Define a listener that responds to location updates
 		LocationListener locationListener = new LocationListener() {
@@ -140,11 +139,9 @@ public class CreateStoryActivity extends StoryActivityBase {
 				// Called when a new location is found by the network location
 				// provider.
 
-				Toast.makeText(getApplicationContext(),
-						"New Location obtained.", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(),"New Location obtained.", Toast.LENGTH_LONG).show();
 				makeUseOfNewLocation(location);
 				locationManager.removeUpdates(this);
-
 			}
 
 			public void onStatusChanged(String provider, int status,
@@ -162,16 +159,12 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// updates
 		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			Log.d(LOG_TAG, "locationManager.isProviderEnabled = true/gps");
-			locationManager.requestLocationUpdates(
-					LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-			Location location = locationManager
-					.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+			Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 			if (location != null) {
 				makeUseOfNewLocation(location);
 			} else {
-				Toast.makeText(getApplicationContext(),
-						"GPS has yet to calculate location.", Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(getApplicationContext(),"GPS has yet to calculate location.", Toast.LENGTH_LONG).show();
 			}
 
 		} else {
@@ -194,10 +187,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 		// using Environment.getExternalStorageState() before doing this.
 
 		// For future implementation: store videos in a separate directory
-		File mediaStorageDir = new File(
-				Environment
-						.getExternalStorageDirectory(),
-				"iRemember");
+		File mediaStorageDir = new File(Environment.getExternalStorageDirectory(),"iRemember");
 		// This location works best if you want the created images to be shared
 		// between applications and persist after your app has been uninstalled.
 
@@ -210,18 +200,14 @@ public class CreateStoryActivity extends StoryActivityBase {
 		}
 
 		// Create a media file name
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US)
-				.format(new Date());
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
 		File mediaFile;
 		if (type == MEDIA_TYPE_IMAGE) {
-			mediaFile = new File(mediaStorageDir.getPath() + File.separator
-					+ "IMG_" + timeStamp + ".jpg");
+			mediaFile = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + ".jpg");
 		} else if (type == MEDIA_TYPE_VIDEO) {
-			mediaFile = new File(mediaStorageDir.getPath() + File.separator
-					+ "VID_" + timeStamp + ".mp4");
+			mediaFile = new File(mediaStorageDir.getPath() + File.separator	+ "VID_" + timeStamp + ".mp4");
 		} else if (type == MEDIA_TYPE_AUDIO) {
-			mediaFile = new File(mediaStorageDir.getPath() + File.separator
-					+ "AUD_" + timeStamp + ".3gp");
+			mediaFile = new File(mediaStorageDir.getPath() + File.separator + "AUD_" + timeStamp + ".3gp");
 		} else {
 			Log.e(LOG_TAG, "typ of media file not supported: type was:" + type);
 			return null;

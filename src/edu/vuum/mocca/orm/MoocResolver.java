@@ -117,8 +117,7 @@ public class MoocResolver {
 	 * @return number of rows inserted
 	 * @throws RemoteException
 	 */
-	public int bulkInsertStory(final ArrayList<StoryData> data)
-			throws RemoteException {
+	public int bulkInsertStory(final ArrayList<StoryData> data) throws RemoteException {
 		ContentValues[] values = new ContentValues[data.size()];
 		int index = 0;
 		for (StoryData story : data) {
@@ -137,8 +136,7 @@ public class MoocResolver {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public int bulkInsertTags(final ArrayList<TagsData> data)
-			throws RemoteException {
+	public int bulkInsertTags(final ArrayList<TagsData> data) throws RemoteException {
 		ContentValues[] values = new ContentValues[data.size()];
 		int index = 0;
 		for (TagsData tags : data) {
@@ -160,8 +158,7 @@ public class MoocResolver {
 	 * @return number of StoryData rows deleted
 	 * @throws RemoteException
 	 */
-	public int deleteStoryData(final String selection,
-			final String[] selectionArgs) throws RemoteException {
+	public int deleteStoryData(final String selection, final String[] selectionArgs) throws RemoteException {
 		return cr.delete(storyURI, selection, selectionArgs);
 	}
 
@@ -174,8 +171,7 @@ public class MoocResolver {
 	 * @return number of TagsData rows deleted.
 	 * @throws RemoteException
 	 */
-	public int deleteTagsData(final String selection,
-			final String[] selectionArgs) throws RemoteException {
+	public int deleteTagsData(final String selection, final String[] selectionArgs) throws RemoteException {
 		return cr.delete(tagsURI, selection, selectionArgs);
 	}
 
@@ -237,8 +233,7 @@ public class MoocResolver {
 	 * @throws RemoteException
 	 * @throws FileNotFoundException
 	 */
-	public ParcelFileDescriptor openFileDescriptor(final Uri uri,
-			final String mode) throws RemoteException, FileNotFoundException {
+	public ParcelFileDescriptor openFileDescriptor(final Uri uri, final String mode) throws RemoteException, FileNotFoundException {
 		return cr.openFileDescriptor(uri, mode);
 	}
 
@@ -257,12 +252,9 @@ public class MoocResolver {
 	 * @return an ArrayList of StoryData objects
 	 * @throws RemoteException
 	 */
-	public ArrayList<StoryData> queryStoryData(final String[] projection,
-			final String selection, final String[] selectionArgs,
-			final String sortOrder) throws RemoteException {
+	public ArrayList<StoryData> queryStoryData(final String[] projection, final String selection, final String[] selectionArgs, final String sortOrder) throws RemoteException {
 		// query the C.P.
-		Cursor result = cr.query(storyURI, projection, selection,
-				selectionArgs, sortOrder);
+		Cursor result = cr.query(storyURI, projection, selection,selectionArgs, sortOrder);
 		// make return object
 		ArrayList<StoryData> rValue = new ArrayList<StoryData>();
 		// convert cursor to reutrn object
@@ -287,8 +279,7 @@ public class MoocResolver {
 			final String selection, final String[] selectionArgs,
 			final String sortOrder) throws RemoteException {
 		// query the C.P.
-		Cursor result = cr.query(tagsURI, projection, selection, selectionArgs,
-				sortOrder);
+		Cursor result = cr.query(tagsURI, projection, selection, selectionArgs, sortOrder);
 		// make return object
 		ArrayList<TagsData> rValue = new ArrayList<TagsData>();
 		// convert cursor to reutrn object
@@ -312,8 +303,7 @@ public class MoocResolver {
 	 * @return number of rows changed
 	 * @throws RemoteException
 	 */
-	public int updateStoryData(final StoryData values, final String selection,
-			final String[] selectionArgs) throws RemoteException {
+	public int updateStoryData(final StoryData values, final String selection,final String[] selectionArgs) throws RemoteException {
 		return cr.update(storyURI, values.getCV(), selection, selectionArgs);
 	}
 
@@ -327,8 +317,7 @@ public class MoocResolver {
 	 * @return number of rows changed
 	 * @throws RemoteException
 	 */
-	public int updateTagsData(final TagsData values, final String selection,
-			final String[] selectionArgs) throws RemoteException {
+	public int updateTagsData(final TagsData values, final String selection,final String[] selectionArgs) throws RemoteException {
 		return cr.update(tagsURI, values.getCV(), selection, selectionArgs);
 	}
 
@@ -364,11 +353,9 @@ public class MoocResolver {
 	 * @return StoryData at the given rowID
 	 * @throws RemoteException
 	 */
-	public StoryData getStoryDataViaRowID(final long rowID)
-			throws RemoteException {
+	public StoryData getStoryDataViaRowID(final long rowID) throws RemoteException {
 		String[] selectionArgs = { String.valueOf(rowID) };
-		ArrayList<StoryData> results = queryStoryData(null,
-				MoocSchema.Story.Cols.ID + "= ?", selectionArgs, null);
+		ArrayList<StoryData> results = queryStoryData(null, MoocSchema.Story.Cols.ID + "= ?", selectionArgs, null);
 		if (results.size() > 0) {
 			return results.get(0);
 		} else {
@@ -383,11 +370,9 @@ public class MoocResolver {
 	 * @return TagsData at the given rowID
 	 * @throws RemoteException
 	 */
-	public TagsData getTagsDataViaRowID(final long rowID)
-			throws RemoteException {
+	public TagsData getTagsDataViaRowID(final long rowID) throws RemoteException {
 		String[] selectionArgs = { String.valueOf(rowID) };
-		ArrayList<TagsData> results = queryTagsData(null,
-				MoocSchema.Tags.Cols.ID + "= ?", selectionArgs, null);
+		ArrayList<TagsData> results = queryTagsData(null, MoocSchema.Tags.Cols.ID + "= ?", selectionArgs, null);
 		if (results.size() > 0) {
 			return results.get(0);
 		} else {

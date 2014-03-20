@@ -80,10 +80,9 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 
-public class StoryViewFragment extends Fragment {
-
-	private static final String LOG_TAG = StoryViewFragment.class
-			.getCanonicalName();
+public class StoryViewFragment extends Fragment
+{
+	public static final String LOG_TAG = StoryViewFragment.class.getCanonicalName();
 
 	private MoocResolver resolver;
 	public final static String rowIdentifyerTAG = "index";

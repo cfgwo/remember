@@ -70,8 +70,7 @@ public class MoocSchema {
 	/**
 	 * ConentProvider Related Constants
 	 */
-	public static final String AUTHORITY = ORGANIZATIONAL_NAME + "."
-			+ PROJECT_NAME + ".moocprovider";
+	public static final String AUTHORITY = ORGANIZATIONAL_NAME + "."+ PROJECT_NAME + ".moocprovider";
 	private static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
 
 	// Define a static class that represents description of stored content
@@ -87,29 +86,24 @@ public class MoocSchema {
 		public static final int PATH_FOR_ID_TOKEN = 120;
 
 		// URI for all content stored as story entity
-		public static final Uri CONTENT_URI = BASE_URI.buildUpon()
-				.appendPath(PATH).build();
+		public static final Uri CONTENT_URI = BASE_URI.buildUpon().appendPath(PATH).build();
 
 		private final static String MIME_TYPE_END = "story";
 
 		// define the MIME type of data in the content provider
-		public static final String CONTENT_TYPE_DIR = ORGANIZATIONAL_NAME
-				+ ".cursor.dir/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
-		public static final String CONTENT_ITEM_TYPE = ORGANIZATIONAL_NAME
-				+ ".cursor.item/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
+		public static final String CONTENT_TYPE_DIR  = ORGANIZATIONAL_NAME + ".cursor.dir/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
+		public static final String CONTENT_ITEM_TYPE = ORGANIZATIONAL_NAME + ".cursor.item/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
 
 		// the names and order of ALL columns, including internal use ones
-		public static final String[] ALL_COLUMN_NAMES = { Cols.ID,
-				Cols.LOGIN_ID, Cols.STORY_ID, Cols.TITLE, Cols.BODY,
+		public static final String[] ALL_COLUMN_NAMES = {     Cols.ID,
+				Cols.LOGIN_ID,   Cols.STORY_ID,   Cols.TITLE, Cols.BODY,
 				Cols.AUDIO_LINK, Cols.VIDEO_LINK, Cols.IMAGE_NAME,
-				Cols.IMAGE_LINK, Cols.TAGS, Cols.CREATION_TIME,
-				Cols.STORY_TIME, Cols.LATITUDE, Cols.LONGITUDE };
+				Cols.IMAGE_LINK, Cols.TAGS,       Cols.CREATION_TIME,
+				Cols.STORY_TIME, Cols.LATITUDE,   Cols.LONGITUDE };
 
-		public static ContentValues initializeWithDefault(
-				final ContentValues assignedValues) {
+		public static ContentValues initializeWithDefault(final ContentValues assignedValues) {
 			// final Long now = Long.valueOf(System.currentTimeMillis());
-			final ContentValues setValues = (assignedValues == null) ? new ContentValues()
-					: assignedValues;
+			final ContentValues setValues = (assignedValues == null) ? new ContentValues() : assignedValues;
 			if (!setValues.containsKey(Cols.LOGIN_ID)) {
 				setValues.put(Cols.LOGIN_ID, 0);
 			}
@@ -156,19 +150,19 @@ public class MoocSchema {
 		public static class Cols {
 			public static final String ID = BaseColumns._ID; // convention
 			// The name and column index of each column in your database
-			public static final String LOGIN_ID = "LOGIN_ID";
-			public static final String STORY_ID = "STORY_ID";
-			public static final String TITLE = "TITLE";
-			public static final String BODY = "BODY";
+			public static final String LOGIN_ID   = "LOGIN_ID";
+			public static final String STORY_ID   = "STORY_ID";
+			public static final String TITLE      = "TITLE";
+			public static final String BODY       = "BODY";
 			public static final String AUDIO_LINK = "AUDIO_LINK";
 			public static final String VIDEO_LINK = "VIDEO_LINK";
 			public static final String IMAGE_NAME = "IMAGE_NAME";
 			public static final String IMAGE_LINK = "IMAGE_LINK";
-			public static final String TAGS = "TAGS";
+			public static final String TAGS       = "TAGS";
 			public static final String CREATION_TIME = "CREATION_TIME";
 			public static final String STORY_TIME = "STORY_TIME";
-			public static final String LATITUDE = "LATITUDE";
-			public static final String LONGITUDE = "LONGITUDE";
+			public static final String LATITUDE   = "LATITUDE";
+			public static final String LONGITUDE  = "LONGITUDE";
 		}
 	}
 
@@ -187,26 +181,20 @@ public class MoocSchema {
 		public static final int PATH_FOR_ID_TOKEN = 220;
 
 		// URI for all content stored as Restaurant entity
-		public static final Uri CONTENT_URI = BASE_URI.buildUpon()
-				.appendPath(PATH).build();
+		public static final Uri CONTENT_URI = BASE_URI.buildUpon().appendPath(PATH).build();
 
 		private final static String MIME_TYPE_END = "tags";
 
 		// define the MIME type of data in the content provider
-		public static final String CONTENT_TYPE_DIR = ORGANIZATIONAL_NAME
-				+ ".cursor.dir/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
-		public static final String CONTENT_ITEM_TYPE = ORGANIZATIONAL_NAME
-				+ ".cursor.item/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
+		public static final String CONTENT_TYPE_DIR = ORGANIZATIONAL_NAME  + ".cursor.dir/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
+		public static final String CONTENT_ITEM_TYPE = ORGANIZATIONAL_NAME + ".cursor.item/" + ORGANIZATIONAL_NAME + "." + MIME_TYPE_END;
 
 		// the names and order of ALL columns, including internal use ones
-		public static final String[] ALL_COLUMN_NAMES = { Cols.ID,
-				Cols.LOGIN_ID, Cols.STORY_ID, Cols.TAG };
+		public static final String[] ALL_COLUMN_NAMES = { Cols.ID, Cols.LOGIN_ID, Cols.STORY_ID, Cols.TAG };
 
-		public static ContentValues initializeWithDefault(
-				final ContentValues assignedValues) {
+		public static ContentValues initializeWithDefault(final ContentValues assignedValues) {
 			// final Long now = Long.valueOf(System.currentTimeMillis());
-			final ContentValues setValues = (assignedValues == null) ? new ContentValues()
-					: assignedValues;
+			final ContentValues setValues = (assignedValues == null) ? new ContentValues() : assignedValues;
 			if (!setValues.containsKey(Cols.LOGIN_ID)) {
 				setValues.put(Cols.LOGIN_ID, 0);
 			}

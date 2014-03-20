@@ -75,8 +75,7 @@ public class StoryListActivity extends StoryActivityBase {
         String imageFragmentTag = "imageFragmentTag";
         if (savedInstanceState == null) {
             fragment = new StoryListFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.locations, fragment, imageFragmentTag).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.locations, fragment, imageFragmentTag).commit();
         }
 
     }
