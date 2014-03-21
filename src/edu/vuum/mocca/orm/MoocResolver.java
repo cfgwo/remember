@@ -77,7 +77,7 @@ public class MoocResolver {
 	private ContentResolver cr;
 
 	private Uri storyURI = MoocSchema.Story.CONTENT_URI;
-	private Uri tagsURI = MoocSchema.Tags.CONTENT_URI;
+	private Uri tagsURI   = MoocSchema.Tags.CONTENT_URI;
 
 	/**
 	 * Constructor

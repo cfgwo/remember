@@ -70,7 +70,7 @@ import android.app.*;
 public class StoryActivityBase extends FragmentActivity implements OnOpenWindowInterface {
 
 	boolean promptOnBackPressed = false;
-	StoryListFragment fragment;
+	//StoryListFragment fragment;
 	private static final String LOG_TAG = StoryActivityBase.class.getCanonicalName();
 	boolean mDualPane;
 

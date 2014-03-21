@@ -267,11 +267,9 @@ public class CreateStoryFragment extends Fragment {
 						loginId, storyId, title, body, audioLink, videoLink,
 						imageName, imageData, "", 0, storyTime,
 						latitude, longitude);
-				Log.d(CreateStoryFragment.class.getCanonicalName(), "imageName"
-						+ imageNameET.getText());
+				Log.d(CreateStoryFragment.class.getCanonicalName(), "imageName"+ imageNameET.getText());
 
-				Log.d(CreateStoryFragment.class.getCanonicalName(),
-						"newStoryData:" + newData);
+				Log.d(CreateStoryFragment.class.getCanonicalName(), "newStoryData:" + newData);
 
 				// insert it through Resolver to be put into ContentProvider
 				try {
